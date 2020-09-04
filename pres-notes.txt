@@ -1,0 +1,45 @@
+/* FOR FRIDAY's PRESENTATION DO NOT EDIT */
+/* these are notes/braindumps obtained after trawling through the codebase */
+
+misc.
+- in order to add extra features (and fix critical bugs): I pulled an all-nighter on friday
+  ah, there goes a whole week of productivity ;-;
+
+=== (somewhat cool) stuff we did
+- using tech CEOs as avatars
+  - teehee
+- using glitch features
+  - [automatic code formatting] w/ command+option+S
+  - using git URL
+    - git clone <our project URL>
+    - periodically ran `git pull` (have you met my dear friend, Justin Case?)
+- generating random pellet coordinates with a gaussian distribution
+  - this was needed needed to balance the gameplay
+    - [prob.] pellets cluster near the center of the game's arena, which is where all the action is
+    - [soln.] looked up CLT: adding 2 uniformly random numbers yields a gaussian distribution
+- importing the whole p5.play library, pouring over the documentation, yet only using it for *one* thing
+  (the camera)
+  - considered doing manually, but decided against it because laziness^W efficiency ;>
+- figuring out that you could make an arena for a game that exceeds the screen size of any monitor
+  - as long as you kept track of both the "real" arena dimensions, and the user's screen dimensions
+- using kewl trixx & mad haxx from math/programming competitions
+  - round a random decimal number to the nearest integer *without doing any comparisons*
+    floor(random(1)+0.5)
+  - randomly indexing into an array
+    Math.floor(rng(9999)) % <some arry>.length;
+  - calculating the number of game objects based on screen dimensions
+    <some game object> = Math.floor(Math.sqrt(screenX * screenY));
+
+- okok; these were mostly a waste of time, but fun to play around with
+
+=== cool stuff we didn't do
+- too much to list (I have a > 100 line .txt file full of nothing but ideas :<)
+
+=== (weirddd) bugs I fixed
+- weird bug where the game would crash almost immediately after starting
+  - root cause: somewhere in the code I wrote 
+    => this.size += this.size + <some constant>, but what I *actually* meant to write was
+    => this.size += <some constant>
+  - this one-character bug took >= 2 hours of debugging. ONE. CHARACTER.
+  - pepe_hiss.jpg
+

@@ -207,7 +207,7 @@ class Cell {
     }
 
     // all cells have speed penalty
-    var expnt = 0.70;
+    var expnt = 0.85;
     var speed_factor = 10 / Math.pow(this.size, expnt);
     if(this.playerControlled){
       // set cell velocities according mouse coordinates

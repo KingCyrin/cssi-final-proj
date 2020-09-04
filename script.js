@@ -297,18 +297,17 @@ function replenish_pellets() {
 
 // currently not using this for debugging
 function keyPressed() {
-  switch (
+  /*
+  switch (keyCode){
     keyCode
-    /*
     case KEY1:
       break;
     case KEY2:
       break;
     case KEY3:
       break;
-    */
-  ) {
   }
+  */
 }
 
 // called automatically when the window is resized
@@ -340,6 +339,7 @@ function setup() {
   // initialize the game scene
   // can call this function outside of setup()
   init_game_scene();
+  //frameRate(1);
 }
 
 function draw() {

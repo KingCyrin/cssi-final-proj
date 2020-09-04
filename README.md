@@ -1,37 +1,14 @@
-Welcome to Glitch
+This project is a clone of [agar.io](https://www.agar.io), implemented in yavascript with the [p5.js](https://www.p5js.org) framework.
+
+Imports basic functionality from the old days of agar.io. (So nothing crazy like multiplayer, party mode, custom skins, and the like.)
+
+Screenshots
 =================
 
-Click `Show` in the header to see your app live. Updates to your code will instantly deploy and update live.
+![](/Users/KingRalph/dev/git/cssi-final-proj/img/screenshot 0.png)
 
-**Glitch** is the friendly community where you'll build the app of your dreams. Glitch lets you instantly create, remix, edit, and host an app, bot or site, and you can invite collaborators or helpers to simultaneously edit code with you.
+![](/Users/KingRalph/dev/git/cssi-final-proj/img/screenshot 1.png)
 
-Find out more [about Glitch](https://glitch.com/about).
+![](/Users/KingRalph/dev/git/cssi-final-proj/img/screenshot 2.png)
 
-
-Your Project
-------------
-
-### ← README.md
-
-That's this file, where you can tell people what your cool website does and how you built it.
-
-### ← index.html
-
-Where you'll write the content of your website. 
-
-### ← style.css
-
-CSS files add styling rules to your content.
-
-### ← script.js
-
-If you're feeling fancy you can add interactivity to your site with JavaScript.
-
-### ← assets
-
-Drag in `assets`, like images or music, to add them to your project
-
-Made by [Glitch](https://glitch.com/)
--------------------
-
-\ ゜o゜)ノ
+![](/Users/KingRalph/dev/git/cssi-final-proj/img/screenshot 3.png)

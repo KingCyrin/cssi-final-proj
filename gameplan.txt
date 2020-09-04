@@ -1,0 +1,107 @@
+
+
+[ BEGIN DO-ABLE STUFF ]
+    - [music_game_active.mp3] add background music to the game
+        - read: https://p5js.org/reference/#/libraries/p5.sound
+    - don't draw objects whose positions are geq(screenX) || geq(screenY)
+        (??: mk non-class function to chk this condition)
+    - cells can flee off the arena (and disappear shortly after doing so)
+        - state variable for this: this.time_since_left_arena
+        (deallocated & redrawn once this.time_since_left_arena goes below 0)
+    - [use a bubble sort-esque algo for swapping] draw larger cells on top of smaller cells
+        - swap cells after doing operations in process_pool_objects()
+        ( before the call to BLAH.drawSelf() )
+    - animation for when cells eat other cells
+        - preyCell quickly moves (accelerates?) toward center of predatorCell 
+        (vanishes after touching predatorCell's center)
+[ END DO-ABLE ]
+
+
+- (player) cells can split by pressing <S> key
+    - store in an array of subcells (??: make a subcell class)
+    - newly-split cells accelerate in the dir. of motion (but accel. eventually -> 0)
+    - adjust camera to show all player cells
+    - implement different collision detection scheme for sub-cells of the same instance
+      (i.e. split cells can gradually merge)
+        - sub-cells can "move into" each other (circumference-center collision)
+    - cells can merge after splitting
+        - this.timeUntilMerge (decremented in the draw() loop)
+
+- all cells have a force field / detection field
+        - somewhat useless example: 
+            - https://cssicurriculum.withgoogle.com/projects/dot_pusher.html
+        - somewhat useful example: 
+            - https://spicyyoghurt.com/tutorials/html5-javascript-game-development/collision-detection-physics
+    - make sure pathfinding algo is not glitchy
+        - can view this force field in debug mode
+        - force field causes acceleration towards OR away from its center
+    - cells approach cells they can eat + cells flee cells that can eat them
+    - ATTRACTION TAKES PRECEDENCE OVER REPULSION
+        (otherwise the game would be boring/hard)
+        - "force field" repels preyCells from predatorCells
+        - "force field" attracts predatorCells from preyCells
+    - predatorCells will lock onto their targets
+        - [??: think this through] switch targets if newtarget.size > oldtarget.size
+
+- player can eject mass
+  - eject mass by pressing <w> key
+  - for simplicity: ejected mass will be tiny cells
+  - features under consideration
+    - animate the process of losing mass
+    - ejected pellets will flash (rainbow colour)
+
+- implement viruses
+    - size: 512 (??: uniform across all viruses)
+    - colour: red interior (ellipse()), black exterior (stroke())
+    - viruses can overlap w/ each other
+  - store last pellet idx in a var in order to draw viruses over pellets
+  - viruses split cells on collision
+    - this occurs when: cell.size > SOME_NUMBER
+      - virus collision (cell center touches virus exterior)
+  - [OPTIONAL] features under consideration:
+    - cells pass under viruses if they are smaller in size
+    - cells pass over viruses if they are greater in size
+
+- [Graphics.js]
+    - pause menu ( NOTE: don't forget to integrate this into the keyPressed() function in script.js )
+    - make a patterned background (don't copy agar.io)
+        - grid that's been rotated 90º
+        - [??: CPU intensive] animated background
+            - https://galaxy-text.glitch.me/
+            - https://p5js.org/examples/simulate-snowflakes.html
+    - display player's scores (store locally w/ p5js)
+        - score continues to increase even when size is at it's max
+    - main menu
+
+- [PRIORITY] multiplayer (w/ websockets or sth)
+  - [HIGH PRIORITY] local multiplayer [vertical split screen like in mario kart]
+  - host w/ heroku? (or sth similar)
+    - server handles game logic
+    - client handles rendering locally
+      - send keypresses/keyCodes AND/OR mouse movements over wifi
+    - multiplayer features
+        - spectating
+        - players can form teams
+        - battle royale
+            - circular map that slowly shrinks
+        - [v1] capture the flag
+            - steal a flag, bring it back to your base
+            - steal a flag by consuming a player (only have to consume one of their cells) who is carrying 
+        - [v2] capture the flag (pick better name)
+            - there are “zones” to capture/occupy
+            - occupied zones fill some sort of team-shared “resource bar” thingy
+
+== TBD
+- SOUND FX (http://sfxr.me/)
+    - new high score
+    - gameover music
+    - menu music
+        - button click
+
+- [PERF. OPTIMIZATIONS]
+    - Apply these changes:
+        https://www.loginradius.com/engineering/blog/16-javascript-hacks-for-optimization/
+    - read these (don't waste time tho):
+      https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/JIT_Optimization_Strategies
+
+
